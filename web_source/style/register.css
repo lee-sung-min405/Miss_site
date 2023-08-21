@@ -1,0 +1,109 @@
+body {
+	margin: 0;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	background: url(../img/megabox.jpg);
+	background-size: cover;
+	backdrop-filter: blur(10px);
+}
+
+body > div {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	align-items: center;
+	justify-content: end;
+	flex-direction: row;
+}
+
+#introduce_service {
+	margin-right: auto;
+	margin-left: 250px;
+	color: white;
+	flex-direction: column;
+	font-family: 'Nanum Pen Script', cursive;
+}
+
+#introduce_service > h5 {
+	text-shadow: 0 0 5px white;
+}
+
+#introduce_service > h5:first-child {
+	font-size: 45pt;
+}
+
+#introduce_service > h5:last-child {
+	font-size: 80pt;
+	text-align: end
+}
+
+#register_container {
+	margin-right: 250px;
+}
+
+#top_container > img {
+	height: 70px
+}
+
+#top_container > img:first-child {
+	filter: invert(1);
+	margin-right: 5px;
+	cursor: pointer
+}
+
+#top_container > h5 {
+	font-size: 28pt;
+	margin-left: 10px;
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+#bottom_container {
+	width: 500px;
+	background: white;
+	margin-right: 0px;
+	margin-top: 25px;
+	border-radius: 12px;
+	border: 3px solid #0000001a;
+	padding: 50px
+}
+
+.label-style {
+	font-size: 15pt
+}
+
+.checkBtn-style {
+	white-space: nowrap; margin-left: 20px
+}
+
+.span-style {
+	cursor: pointer
+}
+
+.guide-style {
+	margin: 0.5rem 0 0 0;
+}
+
+.allCenter {
+	display: flex;
+	justify-content: center;
+	/*align-items: center;*/
+}
+
+.background {
+	background-image: url(../img/megabox.jpg);
+	background-size: cover;
+}
+
+input {
+	height: 45px
+}
+
+#checkIDBtn {
+	margin-left: 20px;
+	white-space: nowrap;
+}
+
+#checkNicknameBtn {
+	margin-left: 20px;
+	white-space: nowrap;
+}

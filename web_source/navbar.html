@@ -1,0 +1,104 @@
+<link rel="stylesheet" href="./style/navbar.css">
+<script type="text/javascript" src="./script/navbar.js"></script>
+<header id="navbarRoot" class="navbar navbar-expand-lg custom-navbar">
+	<nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap" style="color: white; height: 100%">
+		<div class="d-flex justify-content-end left-container">
+			<ul class="nav col-12 col-md-auto justify-content-center">
+				<li><a href="https://www.cgv.co.kr/" target="_blank" class="nav-link px-4"><img src="./img/menu_cgv.png" style="height: 30px"></a></li>
+				<li><a href="https://www.lottecinema.co.kr/" target="_blank" class="nav-link px-4"><img src="./img/menu_lotte.png" style="height: 30px"></a></li>
+				<li><a href="https://www.megabox.co.kr/" target="_blank" class="nav-link px-4"><img src="./img/menu_megabox.png" style="height: 30px"></a></li>
+				<!--li><a href="https://www.cgv.co.kr/" target="_blank" class="nav-link px-4">CGV</a></li>
+				<li><a href="https://www.lottecinema.co.kr/" target="_blank" class="nav-link px-4">롯데시네마</a></li>
+				<li><a href="https://www.megabox.co.kr/" target="_blank" class="nav-link px-4">메가박스</a></li-->
+			</ul>
+		</div>
+		<div class="d-flex justify-content-center logo-container">
+			<img onclick="location.href='.'">
+		</div>
+		<div class="d-flex justify-content-start right-container">
+			<ul class="nav col-12 col-md-auto justify-content-center">
+				<li><a href="./notice.html" class="nav-link px-4">공지사항</a></li>
+				<li><a href="./all_movie.html" class="nav-link px-4">전체영화</a></li>
+			</ul>
+			<div id="header_profile">
+				<div>
+					<p id="header_username">로그인</p>
+					<p id="header_userrole">사용자</p>
+				</div>
+				<img id="header_pwchange_btn" src="./img/icon/person-circle.svg">
+				<img id="header_logout_btn" src="./img/icon/box-arrow-right.svg">
+			</div>
+		</div>
+	</nav>
+</header>
+
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content" style="border-radius: 20px; box-shadow: 0 0 20px #00000033;">
+			<div class="modal-header" style="padding-left: 30px; padding-right: 30px">
+				<h1 class="modal-title" id="loginModalLabel" style="font-size: 20pt; font-weight: bold;">로그인</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" style="padding: 30px">
+				<div class="mb-4">
+					<label for="mainIDInput" class="form-label fw-bold">ID</label>
+					<input type="text" class="form-control" id="mainIDInput" autocomplete="username" placeholder="아이디">
+				</div>
+				<div class="mb-4">
+					<label for="mainPWInput" class="form-label fw-bold">PW</label>
+					<div class="input-group">
+						<input type="password" class="form-control" id="mainPWInput" autocomplete="current-password" placeholder="비밀번호">
+						<span id="mainPWSpan" class="input-group-text" style="cursor: pointer"><img id="mainPWEye" src="./img/icon/eye.svg"></span>
+					</div>
+					
+				</div>
+				<div class="d-flex gap-4" style="width: 100%">
+					<button class="btn btn-secondary" type="button" style="flex: 1" onclick="location.href='./register.html'">회원가입</button>
+					<button id="loginBtn" class="btn btn-primary" style="flex: 1" type="button">로그인</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="pwChangeModal" tabindex="-1" aria-labelledby="pwChangeModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content" style="border-radius: 20px; box-shadow: 0 0 20px #00000033;">
+			<div class="modal-header" style="padding-left: 30px; padding-right: 30px">
+				<h1 class="modal-title" id="pwChangeModalLabel" style="font-size: 20pt; font-weight: bold;">회원정보 관리</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" style="padding: 30px">
+				<div class="mb-4">
+					<label for="oldPWInput" class="form-label fw-bold">기존 비밀번호</label>
+					<div class="input-group">
+						<input type="password" class="form-control" id="oldPWInput" autocomplete="current-password">
+						<span id="oldPWSpan" class="input-group-text" style="cursor: pointer"><img id="oldPWEye" src="./img/icon/eye.svg"></span>
+					</div>
+					<p id="oldPWGuide" style="margin: 0.5rem 0 0 0;">영대소문자, 숫자, 특수문자 최소 하나이상 8~16글자</p>
+				</div>
+				<div class="mb-4">
+					<label for="newPWInput" class="form-label fw-bold">새로운 비밀번호</label>
+					<div class="input-group">
+						<input type="password" class="form-control" id="newPWInput" autocomplete="current-password">
+						<span id="newPWSpan" class="input-group-text" style="cursor: pointer"><img id="newPWEye" src="./img/icon/eye.svg"></span>
+					</div>
+					<p id="newPWGuide" style="margin: 0.5rem 0 0 0;">영대소문자, 숫자, 특수문자 최소 하나이상 8~16글자</p>
+				</div>
+				<div class="mb-4">
+					<label for="newPWRInput" class="form-label fw-bold">새로운 비밀번호 확인</label>
+					<div class="input-group">
+						<input type="password" class="form-control" id="newPWRInput" autocomplete="current-password">
+						<span id="newPWRSpan" class="input-group-text" style="cursor: pointer"><img id="newPWREye" src="./img/icon/eye.svg"></span>
+					</div>
+					<p id="newPWRGuide" style="margin: 0.5rem 0 0 0;">새로운 비밀번호를 한번 더 입력해주세요</p>
+				</div>
+				<button id="pwChangeConfirmBtn" class="btn btn-primary mb-3" style="width: 100%" type="button">비밀번호 변경</button>
+				<button id="outMemberBtn" class="btn btn-danger" style="width: 100%" type="button">회원탈퇴</button>
+				<!--div class="d-flex gap-4" style="width: 100%">
+					
+				</div-->
+			</div>
+		</div>
+	</div>
+</div>

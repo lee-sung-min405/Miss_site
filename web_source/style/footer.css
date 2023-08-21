@@ -1,0 +1,29 @@
+#logo_container {
+	height: 100%;
+	align-items: center
+}
+
+#logo_container > img {
+	height: 50%;
+	filter: sepia(57%) saturate(0%) hue-rotate(185deg) brightness(82%) contrast(100%);
+}
+
+#member_container {
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	margin-left: 75px;
+}
+
+#info_container {
+	height: 100%;
+	justify-content: center;
+	flex-direction: column;
+	margin-left: 75px;
+}
+
+.footer-text > h5, a {
+	color: #b9b9b9;
+	font-size: 12pt;
+	font-weight: bold;;
+}

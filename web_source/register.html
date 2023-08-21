@@ -1,0 +1,117 @@
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MISS</title>
+
+	<script type="text/javascript" src="./script/util.js"></script>
+	<script>loadHTML('framework.html')</script>
+	
+	<!-- user resource -->
+	<link rel="stylesheet" href="./style/register.css">
+    <script type="text/javascript" src="./script/register.js"></script>
+</head>
+
+<body>
+	<div>
+		<div id="introduce_service" class="d-flex">
+			<h5>부산 멀티플렉스 3사 상영정보 통합서비스</h5>
+			<h5>'MISS'</h5>
+		</div>
+		<div id="register_container">
+			<div id="top_container" class="d-flex align-items-end">
+				<img src="./img/icon/chevron-left.svg" onclick="location.href='./index.html'">
+				<img src="./img/logo.png">
+				<h5 class="fw-bold">Register</h5>
+			</div>
+			<div id="bottom_container">
+				<div>
+					<div class="mb-4">
+						<label for="mainIDInput" class="form-label fw-bold label-style">아이디</label>
+						<div class="d-flex">
+							<input type="text" class="form-control" id="mainIDInput">
+							<button id="checkIDBtn" class="btn btn-primary">중복확인</button>
+						</div>
+						<p id="idGuide">영소문자, 숫자 조합 8~16자</p>
+					</div>
+					<div class="mb-4">
+						<label for="mainPWInput" class="form-label fw-bold label-style">비밀번호</label>
+						<div class="input-group">
+							<input type="password" class="form-control" id="mainPWInput">
+							<span id="mainPWSpan" class="input-group-text span-style"><img id="mainPWEye" src="./img/icon/eye.svg"></span>
+						</div>
+						<p id="pwGuide">영문자, 숫자, 특수문자 조합 8~16자</p>
+					</div>
+					<div class="mb-4">
+						<label for="mainPWRInput" class="form-label fw-bold label-style">비밀번호 확인</label>
+						<div class="input-group">
+							<input type="password" class="form-control" id="mainPWRInput">
+							<span id="mainPWRSpan" class="input-group-text span-style"><img id="mainPWREye" src="./img/icon/eye.svg"></span>
+						</div>
+						<p id="pwRGuide">비밀번호를 한번 더 입력해주세요</p>
+					</div>
+					<div class="mb-4">
+						<label for="mainNicknameInput" class="form-label fw-bold label-style">닉네임</label>
+						<div class="d-flex">
+							<input type="text" class="form-control" id="mainNicknameInput">
+							<button id="checkNicknameBtn" class="btn btn-primary">중복확인</button>
+						</div>
+						<p id="nicknameGuide">특수문자 사용불가, 1~16자</p>
+					</div>
+					<div class="d-grid gap-2" style="height: 50px; margin-top: 30px">
+						<button id="registerBtn" class="btn btn-primary" type="button">회원가입</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!--body style="margin: 0; font-family: 'IBM Plex Sans KR', sans-serif;">
+	<div style="display: flex; width: 100vw; height: 100vh; background: url(./img/megabox.jpg); background-size: cover;">
+		<div class="background" style="flex: 3"></div>
+		<div class="allCenter" style="display: flex;flex: 2;align-items: center;flex-direction: column;background-color: #2b2b2b;">
+			<div>
+				<div class="mb-5" style="display: flex">
+					<img src="./img/chevron-left.svg" style="width: 70px; filter: invert(1); margin-right: 5px; cursor: pointer" onclick="location.href='./index.html'">
+					<div>
+						<p style="margin: 0;font-size: 45pt;font-weight: bold;line-height: 1;color: white;">MISS</p>
+						<p style="margin: 0;color: white;"><b>M</b>ovie <b>I</b>nformation <b>S</b>ervice <b>S</b>ystem</p>
+					</div>
+				</div>
+				
+				<div class="allCenter card"
+					style="height: fit-content;width: 350px;background-color: #4b4b4b;color: white;">
+					<div class="card-header" style="font-weight: bold; font-size: 16pt; height: 60px; display: flex">
+						<p style="align-self: center; margin: 0">회원가입</p>
+					</div>
+					<div class="card-body">
+						<div class="mb-3">
+							<label for="mainIDInput" class="form-label">아이디</label>
+							<input type="text" class="form-control" id="mainIDInput" placeholder="영소문자 시작, 숫자 조합 8~16자">
+						</div>
+						<div class="mb-3">
+							<label for="mainPWInput" class="form-label">비밀번호</label>
+							<input type="password" class="form-control" id="mainPWInput" placeholder="영문자, 숫자, 특수문자 조합 8~16자">
+						</div>
+						<div class="mb-3">
+							<label for="mainPWInput" class="form-label">비밀번호 확인</label>
+							<input type="password" class="form-control" id="mainCheckPWInput">
+						</div>
+						<div class="mb-4">
+							<label for="mainPWInput" class="form-label">닉네임</label>
+							<input type="text" class="form-control" id="mainNicknameInput" placeholder="특수문자 사용불가, 4~16자">
+						</div>
+						<div class="d-grid gap-2 mb-2" style="height: 50px">
+							<button id="registerBtn" class="btn btn-primary" type="button">회원가입</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body-->
+
+</html>

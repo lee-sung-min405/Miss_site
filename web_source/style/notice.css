@@ -1,0 +1,28 @@
+.custom-table thead th {
+	text-align: center
+}
+
+.custom-table tbody tr td:first-child {
+	text-align: center
+}
+
+.custom-table tbody tr td:not(:nth-child(2)) {
+	text-align: center
+}
+
+.custom-table tbody tr td:nth-child(2) b {
+	margin-left: 6px;
+}
+
+.custom-table tbody tr td:nth-child(2):hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.custom-table tbody tr:not(.disableHover):hover {
+	background: #0000000d;
+}
+
+.custom-table tbody tr {
+	height: 50px
+}

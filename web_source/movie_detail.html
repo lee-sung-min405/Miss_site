@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MISS</title>
+	
+	<script type="text/javascript" src="./script/util.js"></script>
+	<script>loadHTML('framework.html')</script>
+
+	<link rel="stylesheet" href="./style/movie_detail.css">
+    <script type="text/javascript" src="./script/movie_detail.js"></script>
+</head>
+
+<body style="">
+	<script>loadHTML('navbar.html')</script>
+
+	<div class="modal fade" id="postEditModal" tabindex="-1" aria-labelledby="postEditModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="">
+			<div class="modal-content" style="">
+				<div class="modal-header" style="">
+					<div>
+						<h1 class="modal-title fw-bold" id="postEditModalLabel">한줄평 수정</h1>
+					</div>
+					<button type="button" class="btn-close align-self-start" style="margin-top: 2px;" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row mb-3">
+						<label for="inputContent" class="col-sm-1 col-form-label text-center fw-bold">내용</label>
+						<div class="col-sm-11">
+							<textarea class="form-control" id="inputContent" style=""></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-1"></div>
+						<div class="col-sm-11 d-flex">
+							<div id="post_edit_limit">
+								<p style="margin: 0">글자수 : <span class="fw-bold" id="post_edit_length" style="color: green">0</span> / 50</p>
+								<p style="margin: 0">줄바꿈 : <span class="fw-bold" id="post_edit_return" style="color: green">0</span> / 2</p>
+							</div>
+							<div class="ms-auto">
+								<button class="btn btn-danger" id="editCancelBtn">취소</button>
+								<button class="btn btn-secondary ms-2" id="editResetBtn">초기화</button>
+								<button class="btn btn-success ms-2" id="editConfirmBtn">수정</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="padding-top: 0px; position: relative">
+		<div class="bg">
+			<!--div class="bg-pattern"></div-->
+			<img id="info_poster_bg" style="">
+		</div>
+		<div id="detail_container" class="container-xxl" style="">
+			<div class="d-flex" style="">
+				<img src="./img/icon/chevron-left.svg" style="" onclick="location.href='./index.html'">
+				<p class="fw-bold" style="">영화 상세정보</p>
+			</div>
+			<div class="d-flex align-items-end" style="">
+				<img id="info_poster" class="poster" style="">
+				<div style="flex: 3; margin-left: 20px; margin-right: 129px">
+					<div class="d-flex" style="margin-bottom: 30px">
+						<div class="d-flex flex-column">
+							<h3 class="fw-bold" id="info_title" style=""></h3>
+							<h3 class="fw-bold" id="info_date" style=""></h3>
+							<div class="d-flex" style="margin-top: 20px">
+								<div class="d-flex">
+									<div class="d-flex align-selfcenter" style="height: fit-content">
+										<img src="./img/icon/person-badge.svg" style="filter: invert(1); width: 60px; align-self: end">
+										<div class="align-self-end" style="margin-left: 10px">
+											<h5 style="margin-bottom: 0; color: white;">누적 관람객</h5>
+											<h5 class="fw-bold" id="info_audi" style=""></h5>
+										</div>
+									</div>
+								</div>
+								<div class="d-flex" style="margin-left: 45px">
+									<div class="d-flex align-self-center" style="height: fit-content">
+										<img class="align-self-end" src="./img/icon/coin.svg" style="filter: invert(1); width: 60px">
+										<div class="align-self-end" style="margin-left: 17px">
+											<h5 style="margin-bottom: 0; color: white;">총 매출액</h5>
+											<h5 class="fw-bold" id="info_sales" style=""></h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<h3 class="fw-bold" id="info_tagline" style=""></h3>
+					<h3 class="fw-bold" id="info_overview" style=""></h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="d-flex container-xxl flex-column" style="padding: 60px 0;">
+		<div class="d-flex align-items-end" style="margin-bottom: 1rem">
+			<p class="fw-bold" style="color: black; font-size: 26pt; width: fit-content; border-bottom: 1px solid black; margin: 0">상영일정</p>
+			<p style="margin: 0 0 0 20px">update: <span id="info_updateDate">date</span></p>
+		</div>
+		<div class="card mb-4">
+			<div class="card-header">필터</div>
+			<div class="card-body">
+				<form>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label fw-bold">영화사</label>
+						<div class="col-sm-10 row d-flex align-items-center">
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input company-checkbox" type="checkbox" id="companyCbCGV" value="cgv" style="margin-bottom: 0">
+								<label class="form-check-label" for="companyCbCGV">CGV</label>
+							</div>
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input company-checkbox" type="checkbox" id="companyCbLOTTE" value="lotte" style="margin-bottom: 0">
+								<label class="form-check-label" for="companyCbLOTTE">롯데시네마</label>
+							</div>
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input company-checkbox" type="checkbox" id="companyCbMEGABOX" value="megabox" style="margin-bottom: 0">
+								<label class="form-check-label" for="companyCbMEGABOX">메가박스</label>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label fw-bold">지점 (CGV)<br><span class="badge rounded-pill text-bg-primary locationSelector">선택</span><span class="badge rounded-pill text-bg-secondary locationSelector ms-1">해제</span></label>
+						<div id="cgvLocationGroup" class="col-sm-10 row d-flex align-items-center" style="padding-top: calc(.375rem + 1px);"></div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label fw-bold">지점 (롯데시네마)<br><span class="badge rounded-pill text-bg-primary locationSelector">선택</span><span class="badge rounded-pill text-bg-secondary locationSelector ms-1">해제</span></label>
+						<div id="lotteLocationGroup" class="col-sm-10 row d-flex align-items-center" style="padding-top: calc(.375rem + 1px);"></div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label fw-bold">지점 (메가박스)<br><span class="badge rounded-pill text-bg-primary locationSelector">선택</span><span class="badge rounded-pill text-bg-secondary locationSelector ms-1">해제</span></label>
+						<div id="megaboxLocationGroup" class="col-sm-10 row d-flex align-items-center" style="padding-top: calc(.375rem + 1px);"></div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label fw-bold">정렬기준</label>
+						<div id="sortOptionGroup" class="col-sm-10 row d-flex align-items-center">
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input" type="radio" name="sort-option-radios" id="sort-option-time" value="time" style="margin-bottom: 0" checked>
+								<label class="form-check-label" for="sort-option-time">상영시간</label>
+							</div>
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input" type="radio" name="sort-option-radios" id="sort-option-chair" value="chair" style="margin-bottom: 0">
+								<label class="form-check-label" for="sort-option-chair">잔여좌석</label>
+							</div>
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input" type="radio" name="sort-option-radios" id="sort-option-theater" value="theater" style="margin-bottom: 0">
+								<label class="form-check-label" for="sort-option-theater">상영관</label>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-2 col-form-label fw-bold">정렬방법</label>
+						<div id="sortSolutionGroup" class="col-sm-10 row d-flex align-items-center">
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input" type="radio" name="sort-solution-radios" id="sort-option-up" value="up" style="margin-bottom: 0" checked>
+								<label class="form-check-label" for="sort-option-up">오름차순</label>
+							</div>
+							<div class="form-check form-check-inline col-2">
+								<input class="form-check-input" type="radio" name="sort-solution-radios" id="sort-option-down" value="down" style="margin-bottom: 0">
+								<label class="form-check-label" for="sort-option-down">내림차순</label>
+							</div>
+						</div>
+					</div>
+					<div class="mb-1">
+						<button id="btn_filter_reset" type="reset" class="btn btn-secondary">재설정</button>
+						<button id="btn_filter_apply" type="button" class="btn btn-primary" style="margin-left: 10px">적용</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<div class="mb-4 d-flex align-items-center">
+			<div style="border: 1px solid #dee2e6; padding: 15px">
+				<h5 class="fw-bold text-center">📅 Date Select</h5>
+				<table id="date-selector" style="table-layout: fixed">
+					<colgroup>
+						<col style="width: 70px">
+						<col style="width: 70px">
+						<col style="width: 70px">
+						<col style="width: 70px">
+						<col style="width: 70px">
+					</colgroup>
+					<tbody>
+						<tr class="fw-bold" style="font-size: 12px"></tr>
+						<tr class="fw-bold" style="font-size: 17px"></tr>
+						<tr style="font-size: 14px"></tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="ms-auto text-end">
+				<h5 class="fw-bold" id="scheduleTitle" style="font-size: 18pt">title</h5>
+				<h5 style="margin-bottom: 0;font-size: 20pt;color: darkgray;"><span id="scheduleDate">date</span> 상영일정</h5>
+			</div>
+		</div>
+
+		<table class="table table-bordered custom-table align-middle" style="width: 100%; table-layout: fixed;">
+			<colgroup>
+				<col style="width: 15%">
+				<col style="width: 15%">
+				<col style="width: 12.5%">
+				<col style="width: 12.5%">
+				<col style="width: 22.5%">
+				<col style="width: 12.5%">
+				<col style="width: 10%">
+			</colgroup>
+			<thead>
+				<tr>
+					<th scope="col">상영시간</th>
+					<th scope="col">영화사</th>
+					<th scope="col">지점</th>
+					<th scope="col">영화종류</th>
+					<th scope="col">상영관</th>
+					<th scope="col">잔여좌석</th>
+					<th scope="col">바로가기</th>
+				</tr>
+			</thead>
+			<tbody id="scheduleListRoot">
+				<tr class="disableHover">
+					<td colspan="7" style="font-size: 14pt; font-weight: bold; padding: 50px 0;">필터를 적용해주세요!</td>
+				</tr>
+			</tbody>
+		</table>
+		<nav class="mt-4" id="schedulePagination">
+			<ul class="pagination pagination-lg justify-content-center" id="schedulePaginationUl">
+				
+			</ul>
+		</nav>
+	</div>
+
+	<div class="d-flex container-xxl flex-column" style="padding: 60px 0;">
+		<div class="d-flex align-items-end" style="margin-bottom: 1rem">
+			<p style="color: black; font-size: 26pt; font-weight: bold; width: fit-content; border-bottom: 1px solid black; margin: 0">한줄평</p>
+			<div id="post_limit">
+				<p style="margin: 0 0 0 20px">글자수 : <span id="post_length" style="font-weight: bold; color: green">0</span> / 50</p>
+				<p style="margin: 0 0 0 20px">줄바꿈 : <span id="post_return" style="font-weight: bold; color: green">0</span> / 2</p>
+			</div>
+		</div>
+		<div style="display: flex">
+			<textarea id="post_input" class="form-control" style="flex: 1; min-height: calc(4.5em + .75rem + 2px); resize: none"></textarea>
+			<button id="post_btn" class="btn btn-primary ms-4">한줄평 쓰기</button>
+		</div>
+		<div id="postListRoot" class="row row-cols-1 row-cols-md-4 g-4 mt-1">
+		</div>
+	</div>
+	<script>loadHTML('footer.html')</script>
+</body>
+
+</html>

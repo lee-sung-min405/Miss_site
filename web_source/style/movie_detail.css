@@ -1,0 +1,228 @@
+body {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+}
+
+#postEditModal div.modal-dialog {
+	min-width: 800px
+}
+
+#postEditModal div.modal-content {
+	border-radius: 20px; box-shadow: 0 0 20px #00000033;
+}
+
+#postEditModal div.modal-header {
+	padding-left: 30px; padding-right: 30px
+} 
+
+#postEditModalLabel {
+	font-size: 20pt
+}
+
+#postEditModal div.modal-body {
+	padding: 30px
+}
+
+#inputContent {
+	min-height: calc(9em + .75rem + 2px)
+}
+
+.bg:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, #000000cc 0%, #00000000 50%, #000000cc 100%);
+	background: linear-gradient(to right, #000000cc 0%, #00000000 50%, #000000cc 100%);
+}
+
+.bg {
+	overflow: hidden;
+	position: absolute;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	min-width: 1100px;
+	margin: 0 auto;
+}
+
+.bg:after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+	background-color: rgba(3, 1, 21, 0.7);
+}
+
+.bg-pattern {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+	background: url('../img/bg-movie-detail-pattern.png') repeat 0 0;
+}
+
+#info_poster_bg {
+	width: 100%; filter: blur(10px);
+}
+
+#detail_container {
+	position: relative; z-index: 3; height: 800px; padding-top: 100px
+}
+
+#detail_container > div:first-child {
+	padding-top: 60px
+}
+
+#detail_container > div:first-child > img {
+	width: 50px; filter: invert(1); margin-right: 5px; cursor: pointer
+}
+
+#detail_container > div:first-child > p {
+	color: #ffffffe6; font-size: 26pt; width: fit-content; border-bottom: 1px solid white
+}
+
+#detail_container > div:last-child {
+	margin-top: 50px
+}
+
+.poster {
+	flex: 1;
+	width: 0px;
+	border-radius: 15px;
+	box-shadow: 0px 0px 15px 0px #00000040;
+	transition: box-shadow .1s cubic-bezier(0.4, 0, 1, 1);
+	border: 4px solid #ffffff0d;
+	box-sizing: border-box;
+	margin-right: 25px
+}
+
+.custom-table thead th {
+	text-align: center
+}
+
+.custom-table tbody tr td {
+	text-align: center
+}
+
+.custom-table tbody tr td:nth-child(2) img {
+	width: 140px;
+}
+
+.custom-table tbody tr:not(.disableHover):hover {
+	background: #0000000d;
+}
+
+.custom-table tbody tr {
+	height: 50px
+}
+
+#date-selector td {
+	text-align: center;
+}
+
+#date-selector tr:nth-child(2) td div {
+	width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+	border-radius: 50%;
+}
+
+#date-selector tr:nth-child(2) td div:hover {
+	color: white;
+    background: black;
+    cursor: pointer
+}
+
+#date-selector tr:nth-child(2) td div.sel {
+	color: white;
+    background: black;
+    cursor: pointer
+}
+
+#date-selector tr td.sat {
+	color: blue
+}
+
+#date-selector tr td.sun {
+	color: red
+}
+
+#postListRoot > tr > td:last-child > span {
+	font-weight: bold;
+}
+
+.custom-post > div > div.card-body > div > img {
+	content: url('../img/icon/person-circle.svg');
+	width: 22px;
+}
+
+.custom-post > div > div.card-body > div > h5 {
+	margin-bottom: 0;
+	margin-left: 8px;
+	font-weight: bold;
+}
+
+.custom-post > div > div.card-body > div > h5.my-post {
+	color: #2196F3;
+}
+
+.custom-post > div > div.card-footer > div {
+	display: inline;
+	float: right;
+}
+
+.custom-post > div > div.card-footer > div {
+	cursor: default;
+}
+
+.custom-post > div > div.card-footer > div > img {
+	cursor: pointer;
+	filter: invert(49%) sepia(7%) saturate(564%) hue-rotate(166deg) brightness(90%) contrast(90%);
+}
+
+.custom-post > div > div.card-footer > div > img:first-child {
+	content: url('../img/icon/pencil-fill.svg');
+}
+
+.custom-post > div > div.card-footer > div > img:last-child {
+	margin-left: 5px;
+	content: url('../img/icon/trash-fill.svg');
+}
+
+#info_title {
+	color: white; font-size: 30pt
+}
+
+#info_date {
+	color: white; font-size: 16pt
+}
+
+#info_audi {
+	margin-bottom: 0; color: white; font-size: 18pt; margin-top: 5px
+}
+
+#info_sales {
+	margin-bottom: 0; color: white; font-size: 18pt; margin-top: 5px
+}
+
+#info_tagline {
+	color: white; font-size: 18pt;
+}
+
+#info_overview {
+	color: gray; font-size: 14pt; line-height: 35px;-webkit-line-clamp: 4;display: -webkit-box;-webkit-box-orient: vertical;overflow: hidden;
+}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MISS</title>
+
+	<script type="text/javascript" src="./script/util.js"></script>
+	<script>loadHTML('framework.html')</script>
+	
+	<link rel="stylesheet" href="./style/notice.css">
+    <script type="text/javascript" src="./script/notice.js"></script>
+</head>
+
+<body style="font-family: 'IBM Plex Sans KR', sans-serif;">
+	<script>loadHTML('navbar.html')</script>
+
+	<div class="modal fade" id="noticeViewModal" tabindex="-1" aria-labelledby="noticeViewModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="min-width: 800px">
+			<div class="modal-content" style="border-radius: 20px; box-shadow: 0 0 20px #00000033;">
+				<div class="modal-header" style="padding-left: 30px; padding-right: 30px">
+					<div>
+						<h1 class="modal-title" style="font-size: 20pt; font-weight: bold"><span id="noticeViewTitle"></span><span id="noticeViewCategory" style="margin-left: 12px; font-size: 12pt" class="badge rounded-pill text-bg-secondary"></span></h1>
+						<p style="margin: 0">작성일 : <span id="noticeViewDate">date</span></p>
+						<p style="margin: 0">조회수 : <span id="noticeViewCount">count</span></p>
+					</div>
+					<button type="button" class="btn-close" style="align-self: start; margin-top: 2px;" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" style="padding: 30px">
+					<textarea id="noticeViewContent" class="form-control mb-3" style="min-height: calc(19.5em + .75rem + 2px); border: none; resize: none;"></textarea>
+					<div style="float: right">
+						<button class="btn btn-danger" id="noticeDeleteBtn">삭제</button>
+						<button class="btn btn-success ms-2" id="noticeEditBtn">수정</button>
+						<button class="btn btn-secondary ms-2" id="noticeCloseBtn">닫기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="noticeWriteModal" tabindex="-1" aria-labelledby="noticeWriteModalLabel" aria-hidden="true">
+		<div class="modal-dialog" style="min-width: 800px">
+			<div class="modal-content" style="border-radius: 20px; box-shadow: 0 0 20px #00000033;">
+				<div class="modal-header" style="padding-left: 30px; padding-right: 30px">
+					<div>
+						<h1 class="modal-title" id="noticeWriteModalLabel" style="font-size: 20pt; font-weight: bold">공지사항 작성</h1>
+						<p style="margin: 0">작성자 : <span id="noticeWriter">writer</span></p>
+					</div>
+					
+					<button type="button" class="btn-close" style="align-self: start; margin-top: 2px;" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body" style="padding: 30px">
+					<div class="row mb-3">
+						<label for="noticeWriteCategoryInput" class="col-sm-1 col-form-label text-center fw-bold">분류</label>
+						<div class="col-sm-11" style="display: flex; align-items: center;">
+							<input type="text" style="width: 200px" class="form-control" id="noticeWriteCategoryInput">
+							<div class="form-check form-check-inline" style="margin-left: 1rem">
+								<input class="form-check-input" type="radio" name="categoryRadioOptions" id="categoryNoticeRadio" value="option1" checked>
+								<label class="form-check-label" for="categoryNoticeRadio">공지</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="categoryRadioOptions" id="categoryEventRadio" value="option2">
+								<label class="form-check-label" for="categoryEventRadio">이벤트</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="categoryRadioOptions" id="categoryCustomRadio" value="option2">
+								<label class="form-check-label" for="categoryCustomRadio">직접입력</label>
+							</div>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="noticeWriteTitleInput" class="col-sm-1 col-form-label text-center fw-bold">제목</label>
+						<div class="col-sm-11">
+							<input type="text" class="form-control fw-bold" id="noticeWriteTitleInput">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="noticeWriteContentInput" class="col-sm-1 col-form-label text-center fw-bold">내용</label>
+						<div class="col-sm-11">
+							<textarea type="text" class="form-control" id="noticeWriteContentInput" style="min-height: calc(19.5em + .75rem + 2px)"></textarea>
+						</div>
+					</div>
+					<div style="float: right">
+						<button class="btn btn-danger"  id="noticeWriteCancelBtn">취소</button>
+						<button class="btn btn-secondary ms-2" id="noticeWriteResetBtn">초기화</button>
+						<button class="btn btn-primary ms-2" id="noticeWriteConfirmBtn">글쓰기</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="padding-top: 0px; position: relative; min-height:calc(100vh - 175px)">
+		<div class="container-xxl" style="position: relative; z-index: 3; padding-top: 160px; padding-bottom: 60px">
+			<div class="d-flex">
+				<p style="color: black; font-size: 26pt; font-weight: bold; width: fit-content; border-bottom: 1px solid white">공지사항</p>
+			</div>
+
+			<table class="table table-bordered custom-table align-middle" style="width: 100%">
+				<colgroup>
+					<col style="width: 80px">
+					<col>
+					<col style="width: 160px">
+					<col style="width: 160px">
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">제목</th>
+						<th scope="col">날짜</th>
+						<th scope="col">조회수</th>
+					</tr>
+				</thead>
+				<tbody id="noticeListRoot">
+					
+				</tbody>
+			</table>
+			<div class="d-flex" style="justify-content: end;">
+				<button id="noticeWriteBtn" class="btn btn-primary">글쓰기</button>
+			</div>
+		</div>
+	</div>
+	<script>loadHTML('footer.html')</script>
+	
+</body>
+
+</html>
